@@ -1,0 +1,13 @@
+/* .Header{
+    position: fixed;
+} */
+
+.link{
+    padding: 2px;
+    color: black;
+}
+
+.nav-item{
+    /* margin-left: 0%; */
+    margin-right: 0%;
+}

@@ -53,6 +53,7 @@ public class StudentServiceImpl implements StudentService {
         Optional<Student> studentExist = this.studentRepository.findStudentByName(student.getName());
         if (studentExist.isPresent()) {
             Student updateStudent = (Student)studentExist.get();
+//            updateStudent.setId(student.getId());
             updateStudent.setName(student.getName());
             updateStudent.setAge(student.getAge());
             updateStudent.set_class(student.get_class());
