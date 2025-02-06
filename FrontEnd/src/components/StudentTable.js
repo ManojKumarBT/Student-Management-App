@@ -3,10 +3,12 @@ import { Table, Button } from "react-bootstrap";
 import UpdateModal from "./UpdateModal";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
 
-function StudentTable({ students, onUpdate, onDelete, searchingStudent }) {
+function StudentTable({ students, onUpdate, onDelete, isSearchingStudent }) {
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  // console.log(isSearchingStudent);
+  // console.log(students);
 
   return (
     <div className="container mt-4">
@@ -21,7 +23,7 @@ function StudentTable({ students, onUpdate, onDelete, searchingStudent }) {
           </tr>
         </thead>
         <tbody>
-          {!searchingStudent && students.map((student) => (
+          {!isSearchingStudent && students.map((student) => (
             <tr key={student.id}>
               <td>{student.id}</td>
               <td>{student.name}</td>
@@ -55,7 +57,7 @@ function StudentTable({ students, onUpdate, onDelete, searchingStudent }) {
         </tbody>
 
         <tbody>
-          {searchingStudent &&
+          {isSearchingStudent && (
             <tr key={students.id}>
               <td>{students.id}</td>
               <td>{students.name}</td>
@@ -73,6 +75,8 @@ function StudentTable({ students, onUpdate, onDelete, searchingStudent }) {
                 >
                   Update
                 </Button>
+
+                
                 <Button
                   variant="danger"
                   className="m-1"
@@ -85,7 +89,7 @@ function StudentTable({ students, onUpdate, onDelete, searchingStudent }) {
                 </Button>
               </td>
             </tr>
-          }
+          )}
         </tbody>
       </Table>
 

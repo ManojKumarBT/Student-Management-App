@@ -14,6 +14,12 @@ function UpdateModal({ show, handleClose, student, handleUpdate }) {
     setUpdatedStudent((prev) => ({ ...prev, [name]: value }));
   };
 
+  
+  const handleUpdateAndVanish = () => {
+    handleUpdate(updatedStudent);
+    handleClose();
+  }
+
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
@@ -65,7 +71,7 @@ function UpdateModal({ show, handleClose, student, handleUpdate }) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>Cancel</Button>
-        <Button variant="success" onClick={() => handleUpdate(updatedStudent)}>Update</Button>
+        <Button variant="success" onClick={handleUpdateAndVanish}>Update</Button>
       </Modal.Footer>
     </Modal>
   );

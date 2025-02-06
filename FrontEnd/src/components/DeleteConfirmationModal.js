@@ -2,6 +2,12 @@ import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
 function DeleteConfirmationModal({ show, handleClose, handleDelete, student }) {
+
+  const handleDeleteAndVanish = () => {
+    handleDelete(student.name);
+    handleClose();
+  }
+
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
@@ -12,7 +18,7 @@ function DeleteConfirmationModal({ show, handleClose, handleDelete, student }) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>Cancel</Button>
-        <Button variant="danger" onClick={() => handleDelete(student.name)}>Delete</Button>
+        <Button variant="danger" onClick={handleDeleteAndVanish}>Delete</Button>
       </Modal.Footer>
     </Modal>
   );

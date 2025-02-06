@@ -3,16 +3,20 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import StudentService from "../service/StudentService";
 
-function FormModal() {
+function AddModal({ viewStudents, show, handleClose}) {
     const navigate = useNavigate();
 
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(true);
 
   const [student, setStudent] = useState ({
     name: "",
-    age: "",
-    _class: "",
-    phone_number: 0
+    age: "10",
+    _class: "10",
+    phone_number: 9999999999
+    // name: "",
+    // age: "",
+    // _class: "",
+    // phone_number: null
   })
 
   const handleChange = (event) => {
@@ -20,10 +24,19 @@ function FormModal() {
     setStudent({ ...student, [name]: value });
 };
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
   const [refreshTrigger, setRefreshTrigger] = useState(false);
+
+  const clearEntries = () => {
+    setStudent({
+      name:"",
+      age:"",
+      _class:"",
+      phone_number: null
+    })
+  }
 
   useEffect(() => {
     console.log("Success");
@@ -38,8 +51,12 @@ function FormModal() {
                 console.log(response.data);
                 console.log(student.name);
                 alert("Added successfully");
-                setRefreshTrigger((prev) => !prev);
-                navigate("/");
+                // setRefreshTrigger((prev) => !prev);
+                handleClose();
+                // setShowAddModal();
+                clearEntries();
+                viewStudents();
+                // navigate("/");
             })
             .catch((error) => {
                 // alert(error.response.data);
@@ -66,11 +83,11 @@ function FormModal() {
 
   return (
     <div>
-      <div className="div" style={{display: "flex"}}>
+      {/* <div className="div" style={{display: "flex"}}>
       <button className="btn btn-primary center-btn" style={{alignItems: "center"}} onClick={handleShow}>
         Add Student
       </button>
-      </div>
+      </div> */}
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
@@ -108,4 +125,4 @@ function FormModal() {
   );
 }
 
-export default FormModal;
+export default AddModal;
