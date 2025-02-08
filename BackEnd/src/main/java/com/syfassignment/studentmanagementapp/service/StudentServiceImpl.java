@@ -17,10 +17,14 @@ public class StudentServiceImpl implements StudentService {
     public StudentServiceImpl() {
     }
 
+
+    //Viewing all Students
     public List<Student> getAllStudents() {
         return this.studentRepository.findAll();
     }
 
+
+    //Searching a Student by Name
     public Student getStudentByName(String name) {
         Optional<Student> optional = this.studentRepository.findStudentByName(name);
         if (optional.isPresent()) {
@@ -30,6 +34,8 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
+
+    //Searching a Student by ID
     public Student getUserById(int id) {
         Optional<Student> optional = this.studentRepository.findById(id);
         if (optional.isPresent()) {
@@ -39,6 +45,8 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
+
+    //Adding a Student
     public Student addStudent(Student student) {
         Optional<Student> studentExist = this.studentRepository.findStudentByName(student.getName());
         if (!studentExist.isPresent()) {
@@ -49,6 +57,8 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
+
+    //Updating a Student
     public String updateStudent(Student student) {
         Optional<Student> studentExist = this.studentRepository.findStudentByName(student.getName());
         if (studentExist.isPresent()) {
@@ -65,6 +75,8 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
+
+    //Deleting a Student
     public String deleteStudent(String name) {
         Optional<Student> optional = this.studentRepository.findStudentByName(name);
         if (optional.isPresent()) {
