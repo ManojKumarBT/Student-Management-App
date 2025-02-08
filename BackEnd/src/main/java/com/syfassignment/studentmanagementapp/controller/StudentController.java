@@ -53,6 +53,8 @@ public class StudentController {
         return new ResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
     }
 
+
+    //API for Adding Student
     @PostMapping({"/addStudent"})
     public ResponseEntity<?> addStudent(@RequestBody @Valid Student student) {
         try {
@@ -65,6 +67,8 @@ public class StudentController {
         }
     }
 
+
+    //API for viewing all the students
     @GetMapping({"/students"})
     public ResponseEntity<?> getAllStudent() {
         try {
@@ -75,6 +79,8 @@ public class StudentController {
         }
     }
 
+
+    //API for searching a student based on ID
     @GetMapping({"/user/{id}"})
     public ResponseEntity<?> getUserById(@PathVariable int id) {
         try {
@@ -87,6 +93,8 @@ public class StudentController {
         }
     }
 
+
+    //API for searching a student based on Name
     @GetMapping({"/student"})
     public ResponseEntity<?> getStudentByName(@Param("name") @Valid String name) {
         try {
@@ -99,6 +107,8 @@ public class StudentController {
         }
     }
 
+
+    //API for Updating student details
     @PutMapping({"/update/student"})
     public ResponseEntity<?> updateStudent(@RequestBody @Valid Student student) {
         try {
@@ -110,6 +120,8 @@ public class StudentController {
         }
     }
 
+
+    //API for Deleting a student
     @DeleteMapping({"delete/student"})
     public ResponseEntity<?> deleteUserByEmail(@Param("name") @Valid String name) {
         return new ResponseEntity(this.studentService.deleteStudent(name), HttpStatus.OK);
