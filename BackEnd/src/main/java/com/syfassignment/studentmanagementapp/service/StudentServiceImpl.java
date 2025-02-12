@@ -7,6 +7,7 @@ import com.syfassignment.studentmanagementapp.repository.StudentRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.SpringVersion;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -59,21 +60,41 @@ public class StudentServiceImpl implements StudentService {
 
 
     //Updating a Student
-    public String updateStudent(Student student) {
-        Optional<Student> studentExist = this.studentRepository.findStudentByName(student.getName());
-        if (studentExist.isPresent()) {
-            Student updateStudent = (Student)studentExist.get();
-//            updateStudent.setId(student.getId());
-            updateStudent.setName(student.getName());
-            updateStudent.setAge(student.getAge());
-            updateStudent.set_class(student.get_class());
-            updateStudent.setPhone_number(student.getPhone_number());
-            Student updatedStudent = (Student)this.studentRepository.save(updateStudent);
-            return "User Details Updated Successfully";
-        } else {
-            throw new StudentNotFoundException("User not found with the Name: " + student.getName());
-        }
+//    public String updateStudent(Student student) {
+//        Optional<Student> studentExist = this.studentRepository.findStudentByName(student.getName());
+//        if (studentExist.isPresent()) {
+//            Student updateStudent = (Student)studentExist.get();
+////            updateStudent.setId(student.getId());
+//            updateStudent.setName(student.getName());
+//            updateStudent.setAge(student.getAge());
+//            updateStudent.set_class(student.get_class());
+//            updateStudent.setPhone_number(student.getPhone_number());
+//            Student updatedStudent = (Student)this.studentRepository.save(updateStudent);
+//            return "User Details Updated Successfully";
+//        } else {
+//            throw new StudentNotFoundException("User not found with the Name: " + student.getName());
+//        }
+//    }
+
+
+    //Updating a Student
+    public String updateStudent(Student student){
+        return studentRepository.findStudentByName(student.getName())
+                .map(existingStudent -> updateExistingStudent(existingStudent, student))
+                .orElseThrow(() -> new StudentNotFoundException("User not found with the Name: " + student.getName()));
     }
+
+    private String updateExistingStudent(Student existingStudent, Student newStudent){
+        existingStudent.setName(newStudent.getName());
+        existingStudent.setAge(newStudent.getAge());
+        existingStudent.set_class(newStudent.get_class());
+        existingStudent.setPhone_number(newStudent.getPhone_number());
+
+        studentRepository.save(existingStudent);
+        return "User Details Updated Successfully";
+    }
+
+
 
 
     //Deleting a Student
