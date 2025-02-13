@@ -102,13 +102,6 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findStudentByName(name)
                 .map(existingStudent -> deleteExistingStudent(existingStudent))
                 .orElseThrow(() -> new StudentNotFoundException("Student not found with the Name: " + name));
-//        Optional<Student> optional = this.studentRepository.findStudentByName(name);
-//        if (optional.isPresent()) {
-//            this.studentRepository.deleteStudentByName(name);
-//            return "Deleted the student with name: " + name;
-//        } else {
-//            throw new StudentNotFoundException("Student not found with the Name: " + name);
-//        }
     }
 
     private String deleteExistingStudent(Student existingStudent){
