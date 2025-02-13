@@ -81,7 +81,7 @@ public class StudentServiceImpl implements StudentService {
     public String updateStudent(Student student){
         return studentRepository.findStudentByName(student.getName())
                 .map(existingStudent -> updateExistingStudent(existingStudent, student))
-                .orElseThrow(() -> new StudentNotFoundException("User not found with the Name: " + student.getName()));
+                .orElseThrow(() -> new StudentNotFoundException("Student not found with the Name: " + student.getName()));
     }
 
     private String updateExistingStudent(Student existingStudent, Student newStudent){
@@ -91,7 +91,7 @@ public class StudentServiceImpl implements StudentService {
         existingStudent.setPhone_number(newStudent.getPhone_number());
 
         studentRepository.save(existingStudent);
-        return "User Details Updated Successfully";
+        return "Student Details Updated Successfully";
     }
 
 
@@ -99,12 +99,20 @@ public class StudentServiceImpl implements StudentService {
 
     //Deleting a Student
     public String deleteStudent(String name) {
-        Optional<Student> optional = this.studentRepository.findStudentByName(name);
-        if (optional.isPresent()) {
-            this.studentRepository.deleteStudentByName(name);
-            return "Deleted the student with name: " + name;
-        } else {
-            throw new StudentNotFoundException("Student not found with the Name: " + name);
-        }
+        return studentRepository.findStudentByName(name)
+                .map(existingStudent -> deleteExistingStudent(existingStudent))
+                .orElseThrow(() -> new StudentNotFoundException("Student not found with the Name: " + name));
+//        Optional<Student> optional = this.studentRepository.findStudentByName(name);
+//        if (optional.isPresent()) {
+//            this.studentRepository.deleteStudentByName(name);
+//            return "Deleted the student with name: " + name;
+//        } else {
+//            throw new StudentNotFoundException("Student not found with the Name: " + name);
+//        }
+    }
+
+    private String deleteExistingStudent(Student existingStudent){
+        studentRepository.deleteStudentByName(existingStudent.getName());
+        return "Deleted the student with name: " + existingStudent.getName();
     }
 }
