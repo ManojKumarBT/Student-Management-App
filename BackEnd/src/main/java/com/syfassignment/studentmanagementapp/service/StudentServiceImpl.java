@@ -49,32 +49,18 @@ public class StudentServiceImpl implements StudentService {
 
     //Adding a Student
     public Student addStudent(Student student) {
-        Optional<Student> studentExist = this.studentRepository.findStudentByName(student.getName());
-        if (!studentExist.isPresent()) {
-            Student updatedStudent = (Student)this.studentRepository.save(student);
-            return student;
-        } else {
+
+        Optional<Student> studentExist = studentRepository.findStudentByName(student.getName());
+
+        studentExist.ifPresent( s -> {
             throw new StudentAlreadyExistsException("Student already present with the Name: " + student.getName());
-        }
+        });
+
+        return studentRepository.save(student);
     }
 
 
-    //Updating a Student
-//    public String updateStudent(Student student) {
-//        Optional<Student> studentExist = this.studentRepository.findStudentByName(student.getName());
-//        if (studentExist.isPresent()) {
-//            Student updateStudent = (Student)studentExist.get();
-////            updateStudent.setId(student.getId());
-//            updateStudent.setName(student.getName());
-//            updateStudent.setAge(student.getAge());
-//            updateStudent.set_class(student.get_class());
-//            updateStudent.setPhone_number(student.getPhone_number());
-//            Student updatedStudent = (Student)this.studentRepository.save(updateStudent);
-//            return "User Details Updated Successfully";
-//        } else {
-//            throw new StudentNotFoundException("User not found with the Name: " + student.getName());
-//        }
-//    }
+
 
 
     //Updating a Student
@@ -100,7 +86,7 @@ public class StudentServiceImpl implements StudentService {
     //Deleting a Student
     public String deleteStudent(String name) {
         return studentRepository.findStudentByName(name)
-                .map(existingStudent -> deleteExistingStudent(existingStudent))
+                .map(this::deleteExistingStudent)
                 .orElseThrow(() -> new StudentNotFoundException("Student not found with the Name: " + name));
     }
 
