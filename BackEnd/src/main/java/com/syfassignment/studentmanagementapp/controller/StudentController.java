@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping({"/StudentApp/v1"})
 public class StudentController {
+
+    //Injecting the dependency of Service bean using Field injection
     @Autowired
     StudentService studentService;
 
