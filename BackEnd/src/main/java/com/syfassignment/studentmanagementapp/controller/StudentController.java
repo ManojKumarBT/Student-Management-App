@@ -25,6 +25,7 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
+    //No Args constructor
     public StudentController() {
     }
 
