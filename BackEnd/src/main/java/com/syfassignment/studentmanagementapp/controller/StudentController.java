@@ -43,6 +43,7 @@ public class StudentController {
         return new ResponseEntity(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    //Exception Handler for main Exception Class
     @ExceptionHandler({Exception.class})
     public ResponseEntity<String> handleException(Exception ex) {
         return new ResponseEntity("An error occurred: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
