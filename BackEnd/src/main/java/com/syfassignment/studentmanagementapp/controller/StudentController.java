@@ -37,7 +37,9 @@ public class StudentController {
         });
         return errors;
     }
+    
 
+    //Exception Handler for the case Student Not Exists
     @ExceptionHandler({StudentNotFoundException.class})
     public ResponseEntity<String> handleUserNotFoundException(StudentNotFoundException ex) {
         return new ResponseEntity(ex.getMessage(), HttpStatus.NOT_FOUND);
