@@ -48,6 +48,7 @@ public class StudentController {
         return new ResponseEntity("An error occurred: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    //Exception Handler for the case Student Already Exists
     @ExceptionHandler({StudentAlreadyExistsException.class})
     public ResponseEntity<String> handleUserAlreadyExistsException(StudentAlreadyExistsException ex) {
         return new ResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
