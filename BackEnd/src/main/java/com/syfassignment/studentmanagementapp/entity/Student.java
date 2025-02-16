@@ -52,7 +52,16 @@ public class Student {
             message = "Phone number must be at most 10 digits"
     ) Long phone_number;
 
+    //No Args Constuctor
     public Student() {
+    }
+
+    //Constuctor with args
+    public Student(String name, String age, String _class, Long phone_number) {
+        this.name = name;
+        this.age = age;
+        this._class = _class;
+        this.phone_number = phone_number;
     }
 
     public Student(int id, String name, String age, String _class, Long phone_number) {
@@ -62,6 +71,7 @@ public class Student {
         this._class = _class;
         this.phone_number = phone_number;
     }
+        
 
     public int getId() {
         return this.id;
@@ -69,13 +79,6 @@ public class Student {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Student(String name, String age, String _class, Long phone_number) {
-        this.name = name;
-        this.age = age;
-        this._class = _class;
-        this.phone_number = phone_number;
     }
 
     public String getName() {
