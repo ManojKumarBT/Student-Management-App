@@ -4,6 +4,8 @@ import com.syfassignment.studentmanagementapp.entity.Student;
 import java.util.List;
 
 public interface StudentService {
+
+    //API to get all the Students data
     List<Student> getAllStudents();
 
     Student getStudentByName(String name);
