@@ -17,6 +17,7 @@ public interface StudentService {
     //API to add a new student
     Student addStudent(Student student);
 
+    //API to update the student data if exists
     String updateStudent(Student student);
 
     String deleteStudent(String name);
