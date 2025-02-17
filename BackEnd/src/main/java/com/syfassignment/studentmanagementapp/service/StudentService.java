@@ -11,6 +11,7 @@ public interface StudentService {
     //API to get a student by his name if his data exists
     Student getStudentByName(String name);
 
+    //API to get a student by his ID if his data exists
     Student getUserById(int id);
 
     Student addStudent(Student student);
