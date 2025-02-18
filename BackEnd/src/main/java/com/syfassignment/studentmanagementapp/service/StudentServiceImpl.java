@@ -90,6 +90,7 @@ public class StudentServiceImpl implements StudentService {
                 .orElseThrow(() -> new StudentNotFoundException("Student not found with the Name: " + name));
     }
 
+    //Deleting the student data
     private String deleteExistingStudent(Student existingStudent){
         studentRepository.deleteStudentByName(existingStudent.getName());
         return "Deleted the student with name: " + existingStudent.getName();
