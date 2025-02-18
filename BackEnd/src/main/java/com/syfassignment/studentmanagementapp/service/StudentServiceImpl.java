@@ -70,6 +70,7 @@ public class StudentServiceImpl implements StudentService {
                 .orElseThrow(() -> new StudentNotFoundException("Student not found with the Name: " + student.getName()));
     }
 
+    //Updating tge student data
     private String updateExistingStudent(Student existingStudent, Student newStudent){
         existingStudent.setName(newStudent.getName());
         existingStudent.setAge(newStudent.getAge());
