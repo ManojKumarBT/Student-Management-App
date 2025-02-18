@@ -83,7 +83,7 @@ public class StudentServiceImpl implements StudentService {
 
 
 
-    //Deleting a Student
+    //Checking if the student exists, and then deleting his data
     public String deleteStudent(String name) {
         return studentRepository.findStudentByName(name)
                 .map(this::deleteExistingStudent)
