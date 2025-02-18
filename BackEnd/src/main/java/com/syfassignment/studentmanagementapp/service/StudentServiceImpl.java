@@ -63,7 +63,7 @@ public class StudentServiceImpl implements StudentService {
 
 
 
-    //Updating a Student
+    //Checking if the student exists, and then Updating his data
     public String updateStudent(Student student){
         return studentRepository.findStudentByName(student.getName())
                 .map(existingStudent -> updateExistingStudent(existingStudent, student))
