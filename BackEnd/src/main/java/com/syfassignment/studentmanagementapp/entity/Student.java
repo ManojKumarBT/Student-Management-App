@@ -20,38 +20,42 @@ import jakarta.validation.constraints.Pattern;
 )
 public class Student {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.AUTO
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private @NotNull(
-            message = "Name is mandatory"
-    ) @Pattern(
+
+    @NotNull(message = "Name is mandatory")
+    @Pattern(
             regexp = "^[A-Za-z ]{2,30}$",
             message = "Name must contain only letters and spaces and length should be min=2, max= 30"
-    ) String name;
-    private @NotNull(
-            message = "Age is mandatory"
-    ) @Pattern(
+    )
+    private String name;
+
+    @NotNull(message = "Age is mandatory")
+    @Pattern(
             regexp = "^[1-9][0-9]?$",
             message = "Age must be between 1 and 99"
-    ) String age;
-    private @NotNull(
-            message = "Class is mandatory"
-    ) @Pattern(
+    )
+    private String age;
+
+    @NotNull(message = "Class is mandatory")
+    @Pattern(
             regexp = "^[1-9]$|^10$",
             message = "Class must be between 1 and 10"
-    ) String _class;
-    private @NotNull(
-            message = "Phone Number is mandatory"
-    ) @Min(
+    )
+    private String _class;
+
+    @NotNull(message = "Phone Number is mandatory")
+    @Min(
             value = 1000000000L,
             message = "Phone number must be at least 10 digits"
-    ) @Max(
+    )
+    @Max(
             value = 9999999999L,
             message = "Phone number must be at most 10 digits"
-    ) Long phone_number;
+    )
+    private Long phone_number;
 
+    
     //No Args Constructor
     public Student() {
     }
