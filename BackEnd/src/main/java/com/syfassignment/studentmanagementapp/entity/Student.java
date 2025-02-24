@@ -117,6 +117,7 @@ public class Student {
         this._class = _class;
     }
 
+    //Getter for the Phone Number of the student
     public Long getPhone_number() {
         return this.phone_number;
     }
