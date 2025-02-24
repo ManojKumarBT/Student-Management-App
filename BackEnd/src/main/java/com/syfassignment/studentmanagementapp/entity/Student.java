@@ -87,6 +87,7 @@ public class Student {
         this.id = id;
     }
 
+    //Getter for the Name of the student
     public String getName() {
         return this.name;
     }
