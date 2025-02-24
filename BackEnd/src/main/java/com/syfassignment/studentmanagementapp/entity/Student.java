@@ -77,7 +77,7 @@ public class Student {
         this.phone_number = phone_number;
     }
         
-
+    //Getter for ID
     public int getId() {
         return this.id;
     }
