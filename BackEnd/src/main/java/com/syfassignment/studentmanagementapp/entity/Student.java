@@ -107,6 +107,7 @@ public class Student {
         this.age = age;
     }
 
+    //Getter for the class of the student
     public String get_class() {
         return this._class;
     }
