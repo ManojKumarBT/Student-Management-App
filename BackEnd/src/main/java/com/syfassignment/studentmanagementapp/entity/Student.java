@@ -77,12 +77,12 @@ public class Student {
         this.phone_number = phone_number;
     }
         
-    //Getter for ID
+    //Getter for the ID of the student
     public int getId() {
         return this.id;
     }
 
-    //Setter for ID
+    //Setter for the ID of the student
     public void setId(int id) {
         this.id = id;
     }
@@ -97,6 +97,7 @@ public class Student {
         this.name = name;
     }
 
+    //Getter for the age of the student
     public String getAge() {
         return this.age;
     }
