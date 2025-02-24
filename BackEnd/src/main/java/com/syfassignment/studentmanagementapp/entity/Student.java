@@ -92,6 +92,7 @@ public class Student {
         return this.name;
     }
 
+    //Setter for the Name of the student
     public void setName(String name) {
         this.name = name;
     }
