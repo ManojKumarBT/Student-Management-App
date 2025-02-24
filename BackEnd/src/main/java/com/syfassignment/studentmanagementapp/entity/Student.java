@@ -122,6 +122,7 @@ public class Student {
         return this.phone_number;
     }
 
+    //Setter for the Phone Number of the student
     public void setPhone_number(Long phone_number) {
         this.phone_number = phone_number;
     }
